@@ -33,7 +33,7 @@ router.get('/register', (req, res) => {
   }
 
   return res.render('auth/register', { errors: req.flash('errors') });
-});
+});  
 
 // router.post('/register', (req, res, next) => {
 //   User.findOne({ email: req.body.email }).then((user) => {
@@ -63,10 +63,10 @@ router.get('/login', (req, res) => {
 });
 
 router.post(
-  '/local- login',
-  passport.authenticate('local', {
-    successRedirect: 'main/home',
-    failureRedirect: 'api/users/login',
+  '/login',
+  passport.authenticate('local-login', {
+    successRedirect: '/',
+    failureRedirect: '/api/users/login',
     failureFlash: true
   })
 );
@@ -114,7 +114,7 @@ router.put('/update-profile', (req, res, next) => {
     .catch((err) => next(err));
 });
 
-router.put('/update-password', (req, res, next) => {
+router.put('/update-password', userValidation,(req, res, next) => {
   updatePassword(req.body, req.user._id)
     .then(() => {
       return res.redirect('/api/users/profile');

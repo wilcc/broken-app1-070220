@@ -44,11 +44,13 @@
         >Login</a
       ></span
     >
-
     <% }else{ %>
     <span style="color: #ee802e;">
-      Hello &nbsp;<a style="color:#ee802e;" href="/api/users/profile"><%=user.profile.name.toUpperCase()%></a>&nbsp;|&nbsp;</span>
-      <span><a style="color:white;" href="/logout">Logout</a></span>
+      Hello &nbsp;<a style="color: #ee802e;" href="/api/users/profile"
+        ><%=user.profile.name.toUpperCase()%></a
+      >&nbsp;|&nbsp;</span
+    >
+    <span><a style="color: white;" href="/logout">Logout</a></span>
     <% } %>
   </div>
 </nav>
